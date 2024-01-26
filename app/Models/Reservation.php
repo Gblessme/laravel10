@@ -5,10 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Actu extends Model
+class reservations extends Model
 {
     use HasFactory;
-
-    protected $table = 'actus';
+    protected $table = 'reservations';
     protected $primarykey = 'id';
 }

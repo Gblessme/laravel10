@@ -49,6 +49,26 @@ We would like to extend our thanks to the following sponsors for funding Laravel
 - **[byte5](https://byte5.de)**
 - **[OP.GG](https://op.gg)**
 
+## Requetes SQL utiles
+
+```
+--liste des catégories et de leurs plats
+SELECT * FROM categories INNER JOIN plats ON categories.id = plats.categories_id
+INNER JOIN etiquettes_plats ON plats.id = etiquettes_plats.plats_id
+INNER JOIN etiquettes ON etiquettes_plats.etiquettes_id = etiquettes.id
+ORDER BY plats.nom
+```
+### Version dev
+
+il faut d'abord cloner l'application en local :
+```
+git clone ???
+puis il faut configurer les accès dans le dossier ENV
+puis créer une badd et configurer les accès dans le fichier.env
+```
+Pour créer la BDD, vous pouvez utiliser un script bash:
+
+
 ## Contributing
 
 Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).

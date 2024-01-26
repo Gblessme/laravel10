@@ -1,14 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>contact</title>
-    <link href="../css/contact.css" type="text/css" rel="stylesheet" media="screen"/>
-</head>
-<body>
-  <header class="titre">
-    <center>
+@extends ('base')
+
+@section('content')
+
+
+
         <h1>
             <a href="Accueil.html">O Cnamo</a></h1>
     </center>
@@ -32,5 +27,4 @@
       <p>PARLEZ DE NOUS!</p>
     </footer>
   </div>
-</body>
-</html>
+  @endsection

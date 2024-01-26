@@ -5,10 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Actu extends Model
+class PhotoAmbiance extends Model
 {
     use HasFactory;
-
-    protected $table = 'actus';
+    protected $table = 'photos_ambiance';
     protected $primarykey = 'id';
 }
