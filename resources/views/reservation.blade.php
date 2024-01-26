@@ -1,22 +1,5 @@
 @extends ('base')
 
-@php
- $heures = [
-     // crénaux du midi
-     '12:00:00' =>'12:00',
-     '12:30:00' =>'12:30',
-     '13:00:00' =>'13:00',
-     '13:30:00' =>'13:30',
-     
-     // crénaux du soir
-     '20:00:00' =>'20:00',
-     '20:30:00' =>'20:30',
-     '21:00:00' =>'21:00',
-     '21:30:00' =>'21:30',
-     
-    ];   
-    @endphp
-
 @section('content')
 
 
@@ -41,18 +24,10 @@
         <div>
             <label for="heure">Heure</label>
            <select name="heure" id="heure" not-required>
-            <option value="">12:00</option>
-            <!-- créneaux du midi-->
-            <option value="12:00:00">12:00</option>
-            <option value="12:30:00">12:30</option>
-            <option value="13:00:00">13:00</option>
-            <option value="13:30:00">13:00</option>
-
-            <!-- créneaux du soir-->
-            <option value="20:00:00">20:00</option>
-            <option value="20:30:00">20:30</option>
-            <option value="21:00:00">21:00</option>
-            <option value="21:30:00">21:30</option>
+            <option value=""></option>
+            @foreach ($heures as $heure)
+                <option value="{{ $heure }}" {{ old('heure') == $heure ? 'selected' : ''}}>{{ $heure }}</option>
+            @endforeach
            </select>
            @error('heure')
            <div class="invalid-feedback">{{ $message }}</div>
@@ -60,7 +35,7 @@
         </div>
         <div>
             <label for="jour">Jour</label>
-            <input type="date" name="jour" id="jour" value="{{ old('jour') }}" not-required>
+            <input type="date" name="jour" id="jour" min="{{ date ('Y-m-d') }}" value="{{ old('jour') }}" not-required>
             @error('jour')
             <div class="invalid-feedback">{{ $message }}</div>
             @enderror

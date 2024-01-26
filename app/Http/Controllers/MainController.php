@@ -9,6 +9,20 @@ use Illuminate\Http\Request;
 
 class Maincontroller extends Controller
 {
+    private $heures = [
+        // crénaux du midi
+        '12:00:00' =>'12:00',
+        '12:30:00' =>'12:30',
+        '13:00:00' =>'13:00',
+        '13:30:00' =>'13:30',
+        
+        // crénaux du soir
+        '20:00:00' =>'20:00',
+        '20:30:00' =>'20:30',
+        '21:00:00' =>'21:00',
+        '21:30:00' =>'21:30',
+    ];   
+
     public function home()
     {
         $actus = Actu::all();
@@ -35,16 +49,20 @@ class Maincontroller extends Controller
     }
     public function reservation()
     {
-        return view ('reservation');
+    return view ('reservation' ,[
+        'heures' => $this->heures,
+    ]);
     }
     
     public function reservationStore(Request $request)
     {
+        $heures = implode(',', $this->heures);
+
         $validated = $request->validate([
-            'nom' => 'required',
-            'couverts' => 'required',
-            'heure' => 'required',
-            'jour' => 'required',
+            'nom' => 'required|min:3|max:50',
+            'couverts' => 'required|numeric|gte:1|lte:16',
+            'heure' => "required|in:{$heures}",
+            'jour' => 'required|date|date_format:Y-m-d|after_or_equal:today',
             'telephone' => 'required',
             'commentaires' => '',
         ]);
